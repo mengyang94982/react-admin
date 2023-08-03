@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { setupAssets } from '@/plugins'
+setupAssets()
+
 import App from './App.tsx'
-import {setupAssets} from ''
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <>
     <App />
-  </React.StrictMode>,
+  </>
 )

@@ -2,33 +2,49 @@
   "name": "react-admin",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint . --fix",
+    "preview": "vite preview",
+    "format": "dy prettier-write",
+    "cm": "dy git-commit",
+    "cleanup": "dy cleanup",
+    "update-pkg": "dy ncu",
+    "release": "dy release",
+    "prepare": "dy init-simple-git-hooks"
   },
   "dependencies": {
     "antd": "^5.8.0",
     "axios": "^1.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
-    "@iconify/vue": "^4.1.1",
+    "@dylanjs/cli": "^0.0.3",
+    "@iconify/json": "^2.2.97",
+    "@iconify/react": "^4.1.1",
+    "@svgr/core": "^8.0.0",
+    "@svgr/plugin-jsx": "^8.0.1",
+    "@types/node": "^20.4.6",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
     "@unocss/preset-uno": "^0.54.1",
     "@unocss/transformer-directives": "^0.54.1",
-    "@unocss/vite": "^0.54.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
+    "eslint-config-dylanjs": "^0.0.4",
+    "simple-git-hooks": "^2.9.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "unocss": "^0.54.1",
+    "unplugin-icons": "^0.16.5",
+    "vite": "^4.4.5",
+    "vite-plugin-svg-icons": "^2.0.1"
+  },
+  "simple-git-hooks": {
+    "commit-msg": "pnpm dy git-commit-verify",
+    "pre-commit": "pnpm dy lint-staged"
   }
 }

@@ -1,34 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useMemo } from 'react'
+import type { ThemeConfig } from 'antd'
+import { ConfigProvider, theme, App } from 'antd'
+import { useGlobalStore } from '@/store'
 
-function App() {
-  const [count, setCount] = useState(0)
+import zhCN from 'antd/locale/zh_CN'
+import enUS from 'antd/locale/en_US'
 
+function Root() {
+  const { lang, darkMode } = useGlobalStore()
+
+  const currentTheme: ThemeConfig = useMemo(() => {
+    if (darkMode) {
+      return {
+        algorithm: theme.darkAlgorithm
+      }
+    }
+    return {
+      token: {
+        colorPrimary: 'rgb(124, 77, 255)'
+      }
+    }
+  }, [darkMode])
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className="w-520px">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ConfigProvider
+      theme={currentTheme}
+      locale={lang === 'zh' ? zhCN : enUS}
+      componentSize="middle"
+    >
+      <App>
+        <div>app</div>
+      </App>
+    </ConfigProvider>
   )
 }
 
-export default App
+export default Root

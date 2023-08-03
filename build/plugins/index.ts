@@ -1,13 +1,10 @@
 import react from '@vitejs/plugin-react-swc'
 
-import unocss from '@unocss/vite';
+import UnoCSS from 'unocss/vite'
+import unplugin from './unplugin'
 
-
-export function setupVitePlugins() {
-  const plugins = [
-    react(),
-    unocss()
-  ]
+export function setupVitePlugins(viteEnv) {
+  const plugins = [UnoCSS(), react(), unplugin(viteEnv)]
 
   return plugins
 }
