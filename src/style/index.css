@@ -1,0 +1,8 @@
+@import "reset.min.css";
+@import "global.scss";
+
+html,
+body {
+  height: 100%;
+  background: #eee;
+}

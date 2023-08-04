@@ -1,13 +1,15 @@
 import React, { useMemo } from 'react'
 import type { ThemeConfig } from 'antd'
-import { App, Button, ConfigProvider, theme } from 'antd'
+import { App, ConfigProvider, theme } from 'antd'
 import { useGlobalStore } from '@/store'
 
 import zhCN from 'antd/locale/zh_CN'
 import enUS from 'antd/locale/en_US'
 
+import Router from '@/router'
+
 function Root() {
-  const { lang, darkMode, collapsed, setCollapsed } = useGlobalStore()
+  const { lang, darkMode } = useGlobalStore()
 
   const currentTheme: ThemeConfig = useMemo(() => {
     if (darkMode) {
@@ -22,10 +24,6 @@ function Root() {
     }
   }, [darkMode])
 
-  function change() {
-    setCollapsed(true)
-  }
-
   return (
     <ConfigProvider
       theme={currentTheme}
@@ -33,10 +31,7 @@ function Root() {
       componentSize="middle"
     >
       <App>
-        <div>{collapsed}</div>
-        <Button onClick={change}>修改collapsed状态</Button>
-
-        <div>app</div>
+        <Router />
       </App>
     </ConfigProvider>
   )
