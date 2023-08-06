@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 
-import { setupVitePlugins, getRootPath, getSrcPath } from './build'
+import { getRootPath, getSrcPath, setupVitePlugins } from './build'
 
 // https://vitejs.dev/config/
 export default defineConfig(configEnv => {
@@ -15,18 +15,10 @@ export default defineConfig(configEnv => {
         '@': srcPath
       }
     },
+    server: {
+      port: 7001,
+      open: true
+    },
     plugins: setupVitePlugins(viteEnv)
   }
 })
-
-// import {defineConfig} from 'vite'
-// import React from '@vitejs/plugin-react-swc'
-// import UnoCSS from 'unocss/vite'
-//
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [
-//     UnoCSS(),
-//     React(),
-//   ],
-// })

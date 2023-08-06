@@ -1,17 +1,28 @@
-import React from 'react'
-// import { usePcScreen } from '@/hooks'
-// import { useGlobalStore } from '@/store'
-// import { useUpdateEffect } from 'react-use'
+import React, { useState } from 'react'
+import { Layout } from 'antd'
 
-import SilderMenu from './menu'
+import MyMenu from '@/layout/sider/nav'
 
-const Side = () => {
+const Sider = () => {
+  const [collapsed] = useState(false)
+
+  // const onCollapse = () => {
+  //   setCollapsed(!collapsed)
+  // }
+
   return (
-    <div className="w-220px bg-#fff">
-      <div className="h-50px flex justify-center items-center">这个是logo</div>
-      <SilderMenu />
-    </div>
+    <Layout.Sider
+      width={220}
+      collapsedWidth={60}
+      theme="light"
+      collapsible
+      collapsed={collapsed}
+      trigger={null}
+    >
+      <div>后台管理系统</div>
+      <MyMenu />
+    </Layout.Sider>
   )
 }
 
-export default Side
+export default Sider

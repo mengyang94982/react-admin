@@ -1,9 +1,10 @@
-import React, { Suspense } from 'react'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 
-const Main = ({ children }) => {
+const Main = () => {
   return (
-    <div>
-      <Suspense>{children}</Suspense>
+    <div className="flex-1">
+      <Outlet />
     </div>
   )
 }
