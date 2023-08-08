@@ -26,54 +26,31 @@
 //
 // export default Router
 
-import React, { lazy, Suspense } from 'react'
+import React, { lazy } from 'react'
 
-const LazyLoad = Component => {
-  return (
-    <Suspense fallback={'loading'}>
-      <Component />
-    </Suspense>
-  )
-}
+import { mainRoute } from '@/router/mainRoute'
 
 const Login = lazy(() => import('@/views/login'))
 const NotFound = lazy(() => import('@/views/notFound'))
 const Layout = lazy(() => import('@/layout'))
-const Home = lazy(() => import('@/views/home'))
-const About = lazy(() => import('@/views/about'))
 
 const rootRouter = [
   {
     path: '/',
     name: 'root',
-    element: LazyLoad(Layout),
+    element: <Layout />,
+    icon: 'ic:baseline-16mp',
     meta: {
       hide: true,
       title: '首页'
     },
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        element: LazyLoad(Home),
-        meta: {
-          title: 'Home页面'
-        }
-      },
-      {
-        path: '/about',
-        name: 'about',
-        element: LazyLoad(About),
-        meta: {
-          title: 'About页面'
-        }
-      }
-    ]
+    children: mainRoute
   },
   {
     path: '/login',
     name: 'login',
-    element: LazyLoad(Login),
+    element: <Login />,
+    icon: 'ic:baseline-16mp',
     meta: {
       title: '登录',
       hide: true
@@ -82,7 +59,8 @@ const rootRouter = [
   {
     path: '*',
     name: 'notFound',
-    element: LazyLoad(NotFound),
+    element: <NotFound />,
+    icon: 'ic:baseline-16mp',
     meta: {
       hide: true,
       title: '未找到'

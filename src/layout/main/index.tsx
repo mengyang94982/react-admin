@@ -3,8 +3,10 @@ import { Outlet } from 'react-router-dom'
 
 const Main = () => {
   return (
-    <div className="flex-1">
-      <Outlet />
+    <div className="flex-1 p-10px">
+      <div className="wh-full">
+        <Outlet />
+      </div>
     </div>
   )
 }
